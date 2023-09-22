@@ -112,12 +112,13 @@
 //                  SIMPLE PROGRAMMING CONSTRUCTS
 // ***************************************************************
 let x = 10;
+// let x = window.prompt("Enter any number");
 if (x > 10) {
-    document.write("x > 10<br>");
+    document.write("x is greater than 10<br>");
 } else if (x < 10) {
-    document.write("x < 10<br>");
+    document.write("x less than 10<br>");
 } else {
-    document.write("x = 10<br>");
+    document.write("x is equal to 10<br>");
 }
 document.write("<hr><br>");
 
@@ -139,9 +140,42 @@ switch (color) {
 document.write("<hr><br>");
 
 // --------------- FUNCTIONS ---------------
-const AddNums = (num1 = 0, num2 = 0) => {
-    return num1 + num2;
+// const AddNums = (num1 = 0, num2 = 0) => {
+//     return num1 + num2;
+// }
+//below one is even better approach
+const AddNums = (num1 = 0, num2 = 0) => num1 + num2;
+
+document.write(AddNums(34, 23));
+document.write("<hr><br>");
+
+// ***************************************************************
+//                  CLASSES IN JAVASCRIPT
+// ***************************************************************
+class Person {
+    constructor(firstName, lastName, dob) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = new Date(dob);
+    }
+
+    getFullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+
+    getBirthYear() {
+        return this.dob.getFullYear();
+    }
 }
 
-document.write(AddNums(12, 23));
-document.write("<hr><br>");
+const person1 = new Person("Jon", "Doe", "3-5-1995");
+document.write(person1.getFullName());
+
+function SubmitForm() {
+    let studentNameMsg = document.getElementById("studentName").innerHTML;
+    if (studentNameMsg === "") {
+        // document.getElementById("studentName").style.display = "block";
+        document.getElementById("studentNameMsg").innerHTML = "Enter name plz";
+    }
+}
+
